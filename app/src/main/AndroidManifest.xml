@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.e_commerce">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ECommerce"
+        tools:replace="android:allowBackup">
+        <activity android:name=".AboutActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".AdminFeedbackListActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".AdminProductListActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".PaymentDetailsActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".AdminPaymentHistoryActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".OrderDetailsActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".AdminOrderControlActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity android:name=".AdminDasboardActivity" />
+        <activity
+            android:name=".OrderShowActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity android:name=".PaymentActivity" />
+        <activity
+            android:name=".ShippingActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".ProductDetailsActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".AddProductActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".ProfileActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".UserFeedbackActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity
+            android:name=".CartActivity"
+            android:theme="@style/Dasboard.theme" />
+        <activity android:name=".DasboardActivity" />
+        <activity android:name=".signupActivity" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UI.SplashActivity">
+        </activity>
+        <activity android:name=".MainActivity" />
+    </application>
+
+</manifest>

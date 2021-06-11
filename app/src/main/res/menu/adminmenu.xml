@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:id="@+id/uniq1">
+
+        <group android:id="@+id/homegr" >
+            <item android:id="@+id/allocation"
+                android:title="Order"
+                android:icon="@drawable/ic_baseline_assignment_24" />
+        </group>
+        <group android:id="@+id/historygrp">
+            <item android:id="@+id/p_history"
+                android:title="Payment history"
+                android:icon="@drawable/ic_baseline_payment_24" />
+        </group>
+
+        <group android:id="@+id/mcardgrp">
+            <item android:id="@+id/add_product"
+                android:title="Add Product"
+                android:icon="@drawable/ic_baseline_add_24" />
+        </group>
+
+        <group android:id="@+id/friend">
+            <item android:id="@+id/product_list"
+                android:title="Product List"
+                android:icon="@drawable/ic_baseline_list_24" />
+        </group>
+
+        <group android:id="@+id/manage">
+            <item android:id="@+id/managefeedback"
+                android:title="Manage Feedback"
+                android:icon="@drawable/ic_feedback" />
+        </group>
+
+        <group android:id="@+id/log">
+            <item android:id="@+id/logout"
+                android:title="Logout"
+                android:icon="@drawable/logout" />
+        </group>
+
+    </group>
+</menu>

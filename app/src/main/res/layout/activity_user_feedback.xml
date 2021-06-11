@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserFeedbackActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/feedback_title"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:hint="Feedback Title"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"/>
+
+
+    <EditText
+        android:id="@+id/feedbackmessage"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_height="200dp"
+        android:gravity="start"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="Feedback Message........" />
+
+    <Button
+        android:id="@+id/send_feedback_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send FeedBack"
+        android:layout_marginTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"/>
+</LinearLayout>
