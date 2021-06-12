@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="283dp"
         android:layout_height="295dp"
-
+        android:src="@drawable/appicon512"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

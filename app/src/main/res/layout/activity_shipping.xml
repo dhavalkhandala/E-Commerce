@@ -22,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black">
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/purple_200">
 
             <EditText
                 android:id="@+id/input_phone"
@@ -39,8 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black">
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/purple_200">
 
             <EditText
                 android:id="@+id/input_address"
@@ -57,8 +57,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black">
+            app:boxStrokeColor="@color/purple_200"
+            app:hintTextColor="@color/purple_200">
 
             <EditText
                 android:id="@+id/input_City"
@@ -74,6 +74,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@color/purple_200"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:text="Continue" />
     </LinearLayout>
 

@@ -36,8 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:hintTextColor="@color/black"
-        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/purple_200"
+        app:boxStrokeColor="@color/purple_200"
         android:layout_marginBottom="8dp">
         <EditText
             android:id="@+id/input_name"
@@ -53,8 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/purple_200"
+        app:hintTextColor="@color/purple_200"
         android:layout_marginBottom="8dp">
         <EditText
             android:id="@+id/input_price"
@@ -70,8 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/purple_200"
+        app:hintTextColor="@color/purple_200"
         android:layout_marginBottom="8dp">
         <EditText
             android:id="@+id/input_description"
@@ -91,6 +91,8 @@
         android:layout_marginBottom="24dp"
         android:backgroundTint="@color/purple_200"
         android:padding="12dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
         android:text="Add Product"/>
 
     </LinearLayout>

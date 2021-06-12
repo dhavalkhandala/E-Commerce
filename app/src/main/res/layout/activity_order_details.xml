@@ -180,6 +180,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_5dp"
         android:text="Prepared"
+        android:background="#BDB740"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -190,6 +192,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_5dp"
         android:text="Delivered"
+        android:background="#4CAF50"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/preparedbtn"
