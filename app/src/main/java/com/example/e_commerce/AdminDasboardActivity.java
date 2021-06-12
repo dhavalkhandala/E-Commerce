@@ -21,6 +21,7 @@ public class AdminDasboardActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +31,9 @@ public class AdminDasboardActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         TextView username = headerView.findViewById(R.id.usernames);
-//        preferences=getSharedPreferences("User",MODE_PRIVATE);
-//        username.setText(preferences.getString("email",""));
+        preferences=getSharedPreferences("User",MODE_PRIVATE);
+        preferences=getSharedPreferences("Admin",MODE_PRIVATE);
+        username.setText(preferences.getString("adminemail",""));
         sidenavigationmenu();
         
     }
