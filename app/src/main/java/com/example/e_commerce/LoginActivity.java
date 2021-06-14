@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     TextView linksignup;
     EditText txtemail,txtpass;
     ProgressDialog progressdialog;
-    boolean valid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +51,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                     progressdialog.show();
+                String valid = "true";
+                if (txtemail.getText().toString().equals("")) {
+                    txtemail.setError("Please Enter Email Id");
+                    valid = "false";
+                }
+                if (txtpass.getText().toString().equals("")) {
+                    txtpass.setError("Please Enter Valid Password");
+                    valid = "false";
+                }
+                if (valid=="true") {
                     if (txtemail.getText().toString().equals("admin@gmail.com") && txtpass.getText().toString().equals("admin123")) {
                         rememberMe(txtemail.getText().toString(), txtpass.getText().toString());
                         Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
@@ -82,6 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                 });
                     }
+                }
             }
         });
     }
@@ -137,27 +147,4 @@ public class LoginActivity extends AppCompatActivity {
         getUser();
     }
 
-    public boolean validate() {
-        valid = true;
-
-        String email = txtemail.getText().toString();
-        String password = txtpass.getText().toString();
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            txtemail.setError("enter a valid email address");
-            txtemail.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            txtpass.setError("between 4 and 10 alphanumeric characters");
-            txtpass.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-        return valid;
-    }
 }

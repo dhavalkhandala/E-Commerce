@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 public class ProductDetailsActivity extends AppCompatActivity {
 
     int rr;
-    TextView namee,prices,descr,res;
+    TextView namee,prices,descr,res,tt;
     ImageView pimg,addd,subb;
     Button btn;
     @Override
@@ -34,13 +34,14 @@ public class ProductDetailsActivity extends AppCompatActivity {
         addd = findViewById(R.id.addbtn);
         subb = findViewById(R.id.subbtn);
         btn = findViewById(R.id.btnpayu);
+        tt = findViewById(R.id.ttprice);
 
         res.setText("1");
         Glide.with(ProductDetailsActivity.this).load(getIntent().getStringExtra("pimage")).into(pimg);
         namee.setText(getIntent().getStringExtra("pname"));
         prices.setText(getIntent().getStringExtra("price"));
         descr.setText(getIntent().getStringExtra("desc"));
-
+        tt.setText(getIntent().getStringExtra("price"));
         addd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +51,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     num++;
                     rr = price*num;
                     res.setText(String.valueOf(num));
+                    tt.setText(String.valueOf(rr));
+
                 }else {
                     Toast.makeText(ProductDetailsActivity.this, "That's okay", Toast.LENGTH_SHORT).show();
                 }
@@ -65,6 +68,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     num--;
                     rr = price*num;
                     res.setText(String.valueOf(num));
+                    tt.setText(String.valueOf(rr));
                 }
             }
         });

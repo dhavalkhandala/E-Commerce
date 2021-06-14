@@ -169,7 +169,10 @@ public class PaymentActivity extends AppCompatActivity {
                             model.setTotal_Price(getIntent().getStringExtra("total price"));
                             model.setTransactionid(transactionId);
 
+                            String orderid = array.getString("paymentId");
+
                             OrderModel model1 = new OrderModel();
+
                             model1.setUserEmail(userEmail);
                             model1.setAddress(getIntent().getStringExtra("address") + getIntent().getStringExtra("city"));
                             model1.setAmount(array.getString("amount"));
@@ -203,7 +206,7 @@ public class PaymentActivity extends AppCompatActivity {
                                                         new SweetAlertDialog(PaymentActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                                                                 .setTitleText("Congratulation")
                                                                 .setConfirmText("Done"+ ("\uD83D\uDC4C"))
-                                                                .setContentText("Order Id:"+transactionId+"\n"+"Payment Id:"+transactionId)
+                                                                .setContentText("Order Id:"+orderid+"\n"+"Payment Id:"+transactionId)
                                                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                                                     @Override
                                                                     public void onClick(SweetAlertDialog sDialog) {
@@ -244,7 +247,14 @@ public class PaymentActivity extends AppCompatActivity {
                 }
 
             }
+        }else {
+            new SweetAlertDialog(PaymentActivity.this, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText("Oops...")
+                    .setContentText("Something went wrong!")
+                    .show();
+            Intent intent = new Intent(PaymentActivity.this, DasboardActivity.class);
+            startActivity(intent);
+            finish();
         }
-
     }
 }

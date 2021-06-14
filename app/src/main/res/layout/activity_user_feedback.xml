@@ -5,35 +5,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.ECommerce"
     tools:context=".UserFeedbackActivity"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/feedback_title"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:background="@android:color/transparent"
         android:layout_height="wrap_content"
-        android:hint="Feedback Title"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"/>
+        android:layout_marginTop="8dp"
+        app:boxStrokeColor="@color/purple_200"
+        app:hintTextColor="@color/purple_200"
+        android:layout_margin="@dimen/dimen_10dp"
+        app:errorTextColor="@color/black"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginBottom="8dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/feedback_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Feedback Title" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-    <EditText
-        android:id="@+id/feedbackmessage"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:background="@android:color/transparent"
-        android:layout_height="200dp"
-        android:gravity="start"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"
-        android:hint="Feedback Message........" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:boxStrokeColor="@color/purple_200"
+        app:hintTextColor="@color/purple_200"
+        app:errorTextColor="@color/black"
+        app:errorEnabled="true"
+        android:layout_margin="@dimen/dimen_10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginBottom="8dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/feedbackmessage"
+            android:maxHeight="110dp"
+            android:gravity="top"
+            android:minLines="4"
+            android:maxLines="6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+            android:hint="Feedback Message" />
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    <EditText-->
+<!--        android:id="@+id/feedback_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Feedback Title"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:padding="10dp"/>-->
+
+
+<!--    <EditText-->
+<!--        android:id="@+id/feedbackmessage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:gravity="start"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:hint="Feedback Message........" />-->
 
     <Button
         android:id="@+id/send_feedback_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send FeedBack"
-        android:layout_marginTop="10dp"
+
+        android:layout_margin="@dimen/dimen_10dp"
         android:background="@color/purple_200"
         android:textColor="@color/white"
         android:paddingRight="10dp"

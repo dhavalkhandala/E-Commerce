@@ -23,7 +23,6 @@ public class signupActivity extends AppCompatActivity {
 
     TextView linklogin;
     Button btnsignup;
-    boolean valid;
     UserModel model;
     ProgressDialog progressdialog;
     EditText txtuname,txtemail,txtpass;
@@ -55,78 +54,59 @@ public class signupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressdialog.show();
-                if (valid == true){
+                String valid = "true";
+                if (txtuname.getText().toString().equals("")) {
+                    txtuname.setError("Please Enter Valid Username");
+                    progressdialog.dismiss();
+                    valid = "false";
+                }
+                if (txtemail.getText().toString().equals("")) {
+                    txtemail.setError("Please Enter Valid Email Id");
+                    progressdialog.dismiss();
+                    valid = "false";
+                }
+                if (txtpass.getText().toString().equals("")) {
+                    txtpass.setError("Please Enter Valid Password");
+                    valid = "false";
+                    progressdialog.dismiss();
+                }
+                if (valid=="true") {
                     model = new UserModel(
                             txtuname.getText().toString(),
                             txtemail.getText().toString(),
                             txtpass.getText().toString());
 
-                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtemail.getText().toString(),txtpass.getText().toString())
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(txtemail.getText().toString(), txtpass.getText().toString())
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()){
+                                    if (task.isSuccessful()) {
+                                        progressdialog.dismiss();
+                                        Toast.makeText(signupActivity.this, "Your Account Registered Successfully...", Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(signupActivity.this, LoginActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                         FirebaseFirestore.getInstance().collection("Users").document(txtemail.getText().toString()).set(model)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()){
-                                                            Toast.makeText(signupActivity.this, "Your Account Registered Successfully...", Toast.LENGTH_LONG).show();
-                                                            Intent intent = new Intent(signupActivity.this,LoginActivity.class);
-                                                            startActivity(intent);
-                                                            finish();
-                                                            progressdialog.dismiss();
-                                                        }else {
-                                                            Toast.makeText(signupActivity.this, "Error "+task.getException().toString(), Toast.LENGTH_LONG).show();
-                                                            progressdialog.dismiss();
+                                                        if (task.isSuccessful()) {
+                                                        } else {
+                                                            Toast.makeText(signupActivity.this, "Error " + task.getException().toString(), Toast.LENGTH_LONG).show();
                                                         }
                                                     }
                                                 });
-                                    }
-                                    else{
-                                        Toast.makeText(signupActivity.this, "Error"+task.getException().toString(), Toast.LENGTH_LONG).show();
+                                    } else {
                                         progressdialog.dismiss();
+                                        Toast.makeText(signupActivity.this, "Error" + task.getException().toString(), Toast.LENGTH_LONG).show();
+
                                     }
                                 }
                             });
-
-                }else{
-                    validate();
                 }
+
             }
         });
     }
 
-    public boolean validate() {
-        valid = true;
-
-        String email = txtemail.getText().toString();
-        String password = txtpass.getText().toString();
-        String name = txtuname.getText().toString();
-
-        if (name.isEmpty()) {
-            txtuname.setError("Please Enter Name.");
-            txtuname.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            txtemail.setError("enter a valid email address");
-            txtemail.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            txtpass.setError("between 4 and 10 alphanumeric characters");
-            txtpass.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-        return valid;
-    }
 }

@@ -14,10 +14,10 @@ import static android.content.ContentValues.TAG;
 
 public class ShippingActivity extends AppCompatActivity {
 
-    EditText phone,address,city;
+    EditText phone,address,state,city,ccp,flats,colonyy,pinn;
     Button next;
-    boolean valid;
     String phonee,addresss,cityy,pname,price,desc,pimage,qu,total;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +26,19 @@ public class ShippingActivity extends AppCompatActivity {
         setTitle("Shipping Address");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        phone = findViewById(R.id.input_phone);
-        address = findViewById(R.id.input_address);
-        city = findViewById(R.id.input_City);
+        phone = findViewById(R.id.mobile);
+        ccp = findViewById(R.id.ccp);
+        flats = findViewById(R.id.input_flat);
+        city = findViewById(R.id.city);
+        colonyy = findViewById(R.id.input_streetcolony);
+        state = findViewById(R.id.state);
+        pinn = findViewById(R.id.input_pin);
+
         next = findViewById(R.id.btnnext);
 
-        phonee = phone.getText().toString();
-        addresss = address.getText().toString();
+        phonee = ccp.getText().toString() +" "+ phone.getText().toString();
+        addresss = flats.getText().toString()+", "+colonyy.getText().toString()+", "
+                    +city.getText().toString()+", "+state.getText().toString()+", "+pinn.getText().toString();
         cityy = city.getText().toString();
         pname = getIntent().getStringExtra("pname");
         price = getIntent().getStringExtra("price");
@@ -44,66 +50,65 @@ public class ShippingActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (valid == true) {
+
+                String valid = "true";
+                if (phone.getText().toString().equals("") || phone.getText().toString().length() <10 ||phone.getText().toString().equals(null) ) {
+                    phone.setError("Please Enter Valid Mobile Number");
+                    valid = "false";
+                }
+                if (flats.getText().toString().equals("") || flats.getText().toString().equals(null)) {
+                    flats.setError("Please Enter Flat/ House No/ Building name");
+                    valid = "false";
+                }
+                if (city.getText().toString().equals("") || city.getText().toString().equals(null)) {
+                    city.setError("Please Enter City Name");
+                    valid = "false";
+                }
+                if (colonyy.getText().toString().equals("") || colonyy.getText().toString().equals(null)) {
+                    colonyy.setError("Please Enter Street/ Colony Name");
+                    valid = "false";
+                }
+                if (state.getText().toString().equals("") || state.getText().toString().equals(null)) {
+                    state.setError("Please Enter State Name");
+                    valid = "false";
+                }
+                if (pinn.getText().toString().equals("") || pinn.getText().toString().length() < 6 || pinn.getText().toString().equals(null)) {
+                    pinn.setError("Please Enter Valid Pin Code");
+                    valid = "false";
+                }
+                if (valid=="true") {
 
                     int price = Integer.parseInt(getIntent().getStringExtra("price"));
                     int num = Integer.parseInt(getIntent().getStringExtra("quantity"));
-                    int res = price*num;
+                    int res = price * num;
 
-                    Intent intent = new Intent(ShippingActivity.this,PaymentActivity.class);
-                    intent.putExtra("phone",phone.getText().toString());
-                    intent.putExtra("address",address.getText().toString());
-                    intent.putExtra("city",city.getText().toString());
-                    intent.putExtra("pname",getIntent().getStringExtra("pname"));
-                    intent.putExtra("price",getIntent().getStringExtra("price"));
-                    intent.putExtra("desc",getIntent().getStringExtra("desc"));
-                    intent.putExtra("pimage",getIntent().getStringExtra("pimage"));
-                    intent.putExtra("quantity",getIntent().getStringExtra("quantity"));
-                    intent.putExtra("total price",String.valueOf(res));
+                    Intent intent = new Intent(ShippingActivity.this, PaymentActivity.class);
+                    intent.putExtra("phone", ccp.getText().toString() + " " + phone.getText().toString());
+                    intent.putExtra("address", flats.getText().toString() + ", " + colonyy.getText().toString() + ", "
+                            + city.getText().toString() + ", " + state.getText().toString() + ", " + pinn.getText().toString());
+                    intent.putExtra("city", city.getText().toString());
+                    intent.putExtra("pname", getIntent().getStringExtra("pname"));
+                    intent.putExtra("price", getIntent().getStringExtra("price"));
+                    intent.putExtra("desc", getIntent().getStringExtra("desc"));
+                    intent.putExtra("pimage", getIntent().getStringExtra("pimage"));
+                    intent.putExtra("quantity", getIntent().getStringExtra("quantity"));
+                    intent.putExtra("total price", String.valueOf(res));
                     startActivity(intent);
+                }
 //                    Log.d("data","ProductName :"+getIntent().getStringExtra("pname")+"\n"+
-//                            "PRoductPrice :"+getIntent().getStringExtra("price")+"\n"+
+//                            //"PRoductPrice :"+getIntent().getStringExtra("price")+"\n"+
 //                            "Product Desc :"+getIntent().getStringExtra("desc")+"\n"+
 //                            "Product Image :"+getIntent().getStringExtra("pimage")+"\n"+
-//                            "quan :"+getIntent().getStringExtra("quantity")+"\n"+
-//                            "total :"+res);
-                }else {
-                    validate();
-                }
+//                            //"quan :"+getIntent().getStringExtra("quantity")+"\n"+
+////                            "total :"+res+"\n"+
+//                            "address :"+flats.getText().toString()+", "+colonyy.getText().toString()+", "
+//                            +city.getText().toString()+", "+state.getText().toString()+", "+pinn.getText().toString()+"\n"+
+//                            "city :"+ city.getText().toString()+"\n"+
+//                            "phone :"+ ccp.getText().toString() +" "+ phone.getText().toString());
             }
         });
     }
-    public boolean validate() {
-
-        String addres = address.getText().toString();
-        String ct = city.getText().toString();
-        String number = phone.getText().toString();
-
-        if (addres.isEmpty()) {
-            address.setError("Please Enter address.");
-            address.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-
-        if (number.isEmpty()) {
-            phone.setError("Mobile number can't empty");
-            phone.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-        if (ct.isEmpty()) {
-            city.setError("Mobile number can't empty");
-            city.setFocusable(true);
-            valid = false;
-        } else {
-            valid = true;
-        }
-        return valid;
-    }
-
+//
     @Override
     public boolean onSupportNavigateUp() {
         finish();

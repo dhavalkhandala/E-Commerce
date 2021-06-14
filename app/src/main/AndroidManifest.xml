@@ -38,7 +38,9 @@
         <activity android:name=".PaymentActivity" />
         <activity
             android:name=".ShippingActivity"
-            android:theme="@style/Dasboard.theme" />
+            android:theme="@style/Dasboard.theme" >
+
+        </activity>
         <activity
             android:name=".ProductDetailsActivity"
             android:theme="@style/Dasboard.theme" />
@@ -50,7 +52,8 @@
             android:theme="@style/Dasboard.theme" />
         <activity
             android:name=".UserFeedbackActivity"
-            android:theme="@style/Dasboard.theme" />
+            android:theme="@style/Dasboard.theme" >
+        </activity>
         <activity
             android:name=".CartActivity"
             android:theme="@style/Dasboard.theme" />

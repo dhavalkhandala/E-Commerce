@@ -40,6 +40,18 @@ public class UserFeedbackActivity extends AppCompatActivity {
         btnsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String valid = "true";
+                if (title.getText().toString().equals("")) {
+                    title.setError("Please Enter Product Name");
+                    valid = "false";
+                }
+                if (messsage.getText().toString().equals("")) {
+                    messsage.setError("Please Enter Product Description");
+                    valid = "false";
+                }
+                if (valid=="true") {
+
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
                     String userEmail = user.getEmail();
@@ -65,6 +77,7 @@ public class UserFeedbackActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+                }
                 }
             }
         });

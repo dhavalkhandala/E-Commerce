@@ -31,6 +31,7 @@ public class AddHandicraftFragment extends Fragment {
     ImageView imageView;
     Button addproductbtn;
     View view;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,30 +57,46 @@ public class AddHandicraftFragment extends Fragment {
         addproductbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressdialog.show();
-                FirebaseStorage.getInstance().getReference("Products/Handicraft_"+System.currentTimeMillis())
-                        .putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-                            String image=uri.toString();
-                            ProductAddModel model = new ProductAddModel(product_name.getText().toString(),price.getText().toString(),desc.getText().toString(),image,"Handicrft");
-                            FirebaseFirestore.getInstance().collection("Products").document(product_name.getText().toString()).set(model)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()){
-                                                Toast.makeText(view.getContext(), "Add Successfully", Toast.LENGTH_SHORT).show();
-                                                progressdialog.dismiss();
-                                            }else{
-                                                Toast.makeText(view.getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
-                                                progressdialog.dismiss();
+                String valid = "true";
+                if (product_name.getText().toString().equals("")) {
+                    product_name.setError("Please Enter Product Name");
+                    valid = "false";
+                }
+                if (desc.getText().toString().equals("")) {
+                    desc.setError("Please Enter Product Description");
+                    valid = "false";
+                }
+                if (price.getText().toString().equals("")) {
+                    price.setError("Please Enter Valid Product Price");
+                    valid = "false";
+                }
+                if (valid=="true") {
+                    progressdialog.show();
+                    FirebaseStorage.getInstance().getReference("Products/Handicraft_" + System.currentTimeMillis())
+                            .putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
+                                String image = uri.toString();
+                                ProductAddModel model = new ProductAddModel(product_name.getText().toString(), price.getText().toString(), desc.getText().toString(), image, "Handicrft");
+                                FirebaseFirestore.getInstance().collection("Products").document(product_name.getText().toString()).set(model)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(view.getContext(), "Add Successfully", Toast.LENGTH_SHORT).show();
+                                                    progressdialog.dismiss();
+                                                } else {
+                                                    Toast.makeText(view.getContext(), task.getException().toString(), Toast.LENGTH_SHORT).show();
+                                                    progressdialog.dismiss();
+                                                }
                                             }
-                                        }
-                                    });
-                        });
-                    }
-                });
+                                        });
+                            });
+                        }
+                    });
+
+                }
             }
         });
         

@@ -29,7 +29,7 @@ public class AdminOrderControlActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = findViewById(R.id.recycler_view);
-        Query query = FirebaseFirestore.getInstance().collection("Order");
+        Query query = FirebaseFirestore.getInstance().collection("Order").orderBy("datetime", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<OrderModel> rvOptions=new FirestoreRecyclerOptions.Builder<OrderModel>()
                 .setQuery(query,OrderModel.class).build();
 

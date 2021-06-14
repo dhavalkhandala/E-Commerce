@@ -18,7 +18,7 @@
             android:background="@color/purple_500"
             app:titleTextColor="@color/white"
             android:soundEffectsEnabled="true"
-            app:title="E-Commerce"
+            app:title="@string/app_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,13 +28,14 @@
         <FrameLayout
             android:id="@+id/fragmentcontainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <pl.droidsonroids.gif.GifImageView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvshow"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/cat"/>
+                android:layout_height="match_parent"/>
 
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

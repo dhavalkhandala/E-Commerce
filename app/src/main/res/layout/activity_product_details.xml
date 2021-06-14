@@ -7,11 +7,10 @@
     android:layout_height="match_parent"
     tools:context=".ProductDetailsActivity">
 
-
     <androidx.cardview.widget.CardView
         android:layout_margin="@dimen/dimen_10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@android:color/darker_gray"
         app:cardCornerRadius="@dimen/dimen_20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +19,6 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/dimen_10dp"
             android:layout_height="match_parent">
 
             <ImageView
@@ -47,16 +45,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product Name"
-                    android:textSize="@dimen/dimen_20dp"
-                    android:textStyle="bold" />
+                    android:text="Product Name :"
+                    android:textSize="@dimen/dimen_17sp"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/pname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/dimen_10dp"
-                    android:textSize="@dimen/dimen_20dp" />
+                    android:textSize="@dimen/dimen_17sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -72,23 +70,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Product Price"
-                    android:textSize="@dimen/dimen_20dp"
-                    android:textStyle="bold" />
+                    android:text="Product Price :"
+                    android:textSize="@dimen/dimen_17sp"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/Pprice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/dimen_10dp"
-                    android:textSize="@dimen/dimen_20dp" />
+                    android:textSize="@dimen/dimen_17sp" />
 
                 <TextView
                     android:id="@+id/rupey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/dimen_10dp"
-                    android:textSize="@dimen/dimen_20dp" />
+                    android:textSize="@dimen/dimen_17sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -104,64 +102,97 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description"
-                    android:textSize="@dimen/dimen_20dp"
-                    android:textStyle="bold" />
+                    android:text="Description :"
+                    android:textSize="@dimen/dimen_17sp"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/dimen_10dp"
-                    android:textSize="@dimen/dimen_20dp" />
+                    android:textSize="@dimen/dimen_17sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="@dimen/dimen_10dp"
                 android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/line3">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/dimen_15sp"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/dimen_10dp"
+                    android:text="No. Of Product :"/>
                 <ImageView
-                    android:id="@+id/addbtn"
-                    android:layout_width="@dimen/dimen_40dp"
-                    android:layout_height="49dp"
-                    android:src="@drawable/ic_baseline_add_circle_outline_24" />
+                    android:id="@+id/subbtn"
+                    android:layout_width="@dimen/dimen_30dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_baseline_remove_circle_outline_24" />
 
-                <EditText
+                <TextView
                     android:id="@+id/quantity"
                     android:gravity="center"
                     android:layout_width="@dimen/dimen_70dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/dimen_17sp"
                     android:editable="false"/>
 
                 <ImageView
-                    android:id="@+id/subbtn"
-                    android:layout_width="@dimen/dimen_40dp"
-                    android:layout_height="49dp"
-                    android:src="@drawable/ic_baseline_remove_circle_outline_24" />
+                    android:id="@+id/addbtn"
+                    android:layout_width="@dimen/dimen_30dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/line7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Price :"
+                    android:textSize="@dimen/dimen_17sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/ttprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/dimen_10dp"
+                    android:textSize="@dimen/dimen_17sp" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnpayu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Buy"
-                android:layout_marginBottom="@dimen/dimen_20dp"
                 android:background="@color/purple_200"
+                android:text="Buy"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-                app:layout_constraintVertical_bias="0.158" />
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
